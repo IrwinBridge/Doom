@@ -1,6 +1,6 @@
 #include "doom_nukem.h"
 
-int		main(void)
+int		main(int argc, char **argv)
 {
 	ENGINE	doom;
 

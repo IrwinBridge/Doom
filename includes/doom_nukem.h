@@ -13,7 +13,7 @@
 
 # include <math.h>
 # include "definitions.h"
-# include "tga_reader.h"
+//# include "tga_reader.h"
 # include "menu.h"
 # include "render.h"
 # include "editor.h"
