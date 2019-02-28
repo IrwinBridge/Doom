@@ -1,0 +1,16 @@
+# This file contains paths to all the resources for the 'level1' scene
+
+[SOUNDS]
+pistol_shot = 'sounds/game/pistol_shot.ogg'
+
+[MUSIC]
+
+[TEXTURES]
+brick_wall = 'textures/walls/brick_wall.tga'
+brick_floor = 'textures/floors/brick_floor.tga'
+
+[SPRITES]
+
+[FONTS]
+
+[MAPS]

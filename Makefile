@@ -1,27 +1,61 @@
-NAME = doom-nukem
-SRC = src/*.c TgaReader/*.c src/menu/*.c src/render/*.c src/control/*.c src/map/*.c src/editor/*.c
-OBJ = $(SRC:.c = .o)
-MATH = -lm
+TARGET = doom-nukem
+
+SEARCH_WILDCARD =	dependencies/TgaReader/*.c \
+					engine/window/src/*.c \
+					engine/scene_manager/src/*.c \
+				  	engine/data_structures/vector/src/*.c \
+				  	engine/io/src/*.c \
+					engine/sound/src/*.c \
+				  	engine/render/textures/src/*.c \
+				  	engine/render/portal/src/*.c \
+					game/src/*.c \
+					game/src/loop/*.c
+
+
+SRCS = $(wildcard $(SEARCH_WILDCARD))
+OBJ = $(SRCS:.c=.o)
+
+HEADERS = -I dependencies/TgaReader/includes \
+		  -I engine \
+		  -I engine/window/include \
+		  -I engine/scene_manager/include \
+		  -I engine/data_structures/vector/include \
+		  -I engine/io/include \
+		  -I engine/sound/include \
+		  -I engine/render/textures/include \
+		  -I engine/render/portal/include \
+		  -I game/include
+
 ifeq ($(shell uname -s), Linux)
-INC = -I includes -I TgaReader/includes -I src/menu/includes -I src/editor/includes
-SDL = -lSDL2 -lSDL2_mixer -lSDL2_ttf
-else ifeq($(OS), Windows_NT)
-INC = -I includes -I TgaReader/includes -I frameworks/Windows/include/SDL2 -I frameworks/Windows/Mixer/include/SDL2 -I frameworks/Windows/ttf/include/SDL2
-SDL = -L./frameworks/Windows/lib -lSDL2 -L./frameworks/Windows/Mixer/lib -lSDL2_mixer -L./frameworks/Windows/ttf/lib -lSDL2_ttf
+SDL2 =
+
+FRAMES = -lSDL2 -lSDL2_mixer -lSDL2_ttf
 else
-INC = -I includes -I TgaReader/includes -I src/menu/includes \
-		-I frameworks/SDL2_mixer.framework/Versions/A/Headers \
-		-I frameworks/SDL2.framework/Versions/A/Headers \
-		-I frameworks/SDL2_ttf.framework/Versions/A/Headers \
-		-I src/editor/includes
-SDL = -F frameworks/ -framework SDL2 -F frameworks/ -framework SDL2_mixer -F frameworks/ -framework SDL2_ttf
+SDL2 = -I ~/Library/Frameworks/SDL2.framework/Versions/A/Headers \
+	   -I ~/Library/Frameworks/SDL2_image.framework/Versions/A/Headers \
+	   -I ~/Library/Frameworks/SDL2_ttf.framework/Versions/A/Headers \
+	   -I ~/Library/Frameworks/SDL2_mixer.framework/Versions/A/Headers
+
+FRAMES = -F ~/Library/Frameworks/ -framework SDL2 \
+		 -F ~/Library/Frameworks/ -framework SDL2_image \
+		 -F ~/Library/Frameworks/ -framework SDL2_ttf \
+		 -F ~/Library/Frameworks/ -framework SDL2_mixer
 endif
-CC = gcc
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) $(INC) $(MATH) $(SDL) -o $(NAME)
-all: $(NAME)
 
-fclean:
-	/bin/rm -f $(NAME)
+FLAGS = -lm
 
-re: fclean all
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	gcc -o $@ $(OBJ) $(FRAMES) $(FLAGS)
+
+%.o: %.c
+	gcc -c $< -o $@ $(HEADERS) $(SDL2) $(FLAGS) -F ~/Library/Frameworks
+
+.PHONY: clean
+clean:
+	rm -Rf $(OBJ)
+
+.PHONY: fclean
+fclean: clean
+	rm -Rf $(TARGET)

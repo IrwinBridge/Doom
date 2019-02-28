@@ -1,0 +1,18 @@
+# This file contains paths to all the resources for the 'main menu' scene
+
+[SOUNDS]
+menu_hover = 'sounds/menu/hover.ogg'
+menu_select = 'sounds/menu/select.ogg'
+
+[MUSIC]
+menu_bg = 'music/menu/menu_bg.ogg'
+
+[TEXTURES]
+background = 'textures/menu/bg.tga'
+
+[SPRITES]
+
+[FONTS]
+main_menu_font = 'fonts/menu/AmazDooMLeft.ttf'
+
+[MAPS]
