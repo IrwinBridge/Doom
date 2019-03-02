@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_logic.c                                    :+:      :+:    :+:   */
+/*   queue.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 20:38:55 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/02 16:49:26 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/02 14:16:25 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/02 16:25:14 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#ifndef QUEUE_H
+# define QUEUE_H
 
-void	process_logic(t_engine *engine, t_game *game)
+# include <stdlib.h>
+
+typedef struct		s_node
 {
-	// move_camera(engine, game);
-	// move_player(engine, game);
-	// move_foes(engine, game);
-}
+	void			*data;
+	struct s_node	*next;
+}					t_node;
+
+typedef struct		s_queue
+{
+	t_node			*head;
+	t_node			*tail;
+}					t_queue;
+
+t_node				*create_node(void *data);
+t_queue				*create_queue();
+void				destroy_queue(t_queue *queue);
+
+void				enqueue(t_queue *queue, void *data);
+t_node				*dequeue(t_queue *queue);
+
+#endif

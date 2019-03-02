@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_logic.c                                    :+:      :+:    :+:   */
+/*   events.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 20:38:55 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/02 16:49:26 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/02 16:26:46 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/02 16:44:41 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#ifndef EVENTS_H
+# define EVENTS_H
 
-void	process_logic(t_engine *engine, t_game *game)
+typedef enum	e_evtype
 {
-	// move_camera(engine, game);
-	// move_player(engine, game);
-	// move_foes(engine, game);
-}
+	KEY_DOWN,
+	KEY_UP,
+	MOUSE_MOTION,
+	MOUSE_BUTTON_DOWN,
+	MOUSE_BUTTON_UP,
+	MOUSE_WHEEL,
+	QUIT
+}				t_evtype;
+
+typedef struct	s_event
+{
+	t_evtype	type;
+	void		*event;
+}				t_event;
+
+#endif

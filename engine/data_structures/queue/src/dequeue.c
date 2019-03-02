@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_logic.c                                    :+:      :+:    :+:   */
+/*   dequeue.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 20:38:55 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/02 16:49:26 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/02 16:16:51 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/02 16:24:13 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "queue.h"
 
-void	process_logic(t_engine *engine, t_game *game)
+t_node	*dequeue(t_queue *queue)
 {
-	// move_camera(engine, game);
-	// move_player(engine, game);
-	// move_foes(engine, game);
+	t_node	*tail;
+
+	if (queue->tail == NULL)
+		return (NULL);
+	tail = queue->tail;
+	queue->tail = queue->tail->next;
+	if (queue->tail == NULL)
+		queue->head = NULL;
+	return (tail);
 }

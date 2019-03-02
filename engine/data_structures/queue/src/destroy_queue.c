@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_logic.c                                    :+:      :+:    :+:   */
+/*   destroy_queue.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 20:38:55 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/02 16:49:26 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/02 15:58:30 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/02 16:02:01 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "queue.h"
 
-void	process_logic(t_engine *engine, t_game *game)
+void	destroy_queue(t_queue *queue)
 {
-	// move_camera(engine, game);
-	// move_player(engine, game);
-	// move_foes(engine, game);
+	t_node	*node;
+
+	while (queue->tail != queue->head)
+	{
+		node = queue->tail;
+		queue->tail = queue->tail->next;
+		node->next = NULL;
+		free(node->data);
+	}
+	free(queue);
 }

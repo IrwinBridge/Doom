@@ -4,6 +4,7 @@ SEARCH_WILDCARD =	dependencies/TgaReader/*.c \
 					engine/window/src/*.c \
 					engine/scene_manager/src/*.c \
 				  	engine/data_structures/vector/src/*.c \
+					engine/data_structures/queue/src/*.c \
 				  	engine/io/src/*.c \
 					engine/sound/src/*.c \
 				  	engine/render/textures/src/*.c \
@@ -20,6 +21,7 @@ HEADERS = -I dependencies/TgaReader/includes \
 		  -I engine/window/include \
 		  -I engine/scene_manager/include \
 		  -I engine/data_structures/vector/include \
+		  -I engine/data_structures/queue/include \
 		  -I engine/io/include \
 		  -I engine/sound/include \
 		  -I engine/render/textures/include \
