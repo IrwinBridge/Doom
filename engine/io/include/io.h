@@ -6,7 +6,7 @@
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 13:49:54 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/02/26 18:30:34 by cmelara-         ###   ########.fr       */
+/*   Updated: 2019/03/03 20:16:26 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@ int		go_to_block(char *str, char *block);
 int		ini_count_vars(char *str);
 char	*ini_next_name(char *str, bool fresh);
 char	*ini_next_value(char *str, bool fresh);
+int		next_char(char *str, int i, char c);
+bool	is_numeric(char *str);
+float	next_float(char *str, int *i);
 
 #endif

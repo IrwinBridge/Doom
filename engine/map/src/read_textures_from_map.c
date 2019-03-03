@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   read_textures_from_map.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 17:52:50 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/03 21:31:02 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/03 18:25:47 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/03 18:26:14 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#include "map.h"
 
-typedef struct	s_render
+void	read_textures_from_map(t_vector *textures, char *map)
 {
-	t_queue		*portals;
-}				t_render;
-
-#endif
+	printf("Read textures from map\n");
+}

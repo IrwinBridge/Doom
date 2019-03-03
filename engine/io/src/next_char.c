@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   next_char.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 17:52:50 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/03 21:31:02 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/03 18:58:40 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/03 19:25:45 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#include "io.h"
 
-typedef struct	s_render
+int		next_char(char *str, int i, char c)
 {
-	t_queue		*portals;
-}				t_render;
-
-#endif
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
+}

@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   next_float.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 17:52:50 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/03 21:31:02 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/03 20:11:03 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/03 21:05:20 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#include "io.h"
 
-typedef struct	s_render
+float	next_float(char *str, int *i)
 {
-	t_queue		*portals;
-}				t_render;
+	float	n;
 
-#endif
+	while (!is_numeric(&str[*i]))
+		(*i)++;
+	n = atof(&str[*i]);
+	while(is_numeric(&str[*i]))
+		(*i)++;
+	return (n);
+}

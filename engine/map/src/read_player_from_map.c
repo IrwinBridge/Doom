@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   read_player_from_map.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 17:52:50 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/03 21:31:02 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/03 18:07:20 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/03 21:28:21 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#include "map.h"
 
-typedef struct	s_render
+void	read_player_from_map(t_player *player, char *map)
 {
-	t_queue		*portals;
-}				t_render;
-
-#endif
+	player->pos.x = 0;
+	player->pos.y = 0;
+	player->pos.z = 0;
+	player->angle = 0;
+	player->pitch = 0;
+	player->anglesin = sinf(0);
+	player->anglecos = cosf(0);
+	player->sector = 0;
+	printf("Read player from map\n");
+}

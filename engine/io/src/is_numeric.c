@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   is_numeric.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 17:52:50 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/03 21:31:02 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/03 20:06:37 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/03 21:03:44 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#include "io.h"
 
-typedef struct	s_render
+bool	is_numeric(char *str)
 {
-	t_queue		*portals;
-}				t_render;
-
-#endif
+	if (str == NULL || *str == '\0' || isspace(*str))
+		return (false);
+	if (*str == '-' && isdigit(*(str + 1)))
+		return (true);
+	if (isdigit(*str))
+		return (true);
+	return (false);
+}
