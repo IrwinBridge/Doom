@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   play_sound.c                                       :+:      :+:    :+:   */
+/*   init_timer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 14:12:02 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/02/27 14:16:04 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/03 15:56:45 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/03 15:57:24 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sound.h"
+#include "timer.h"
 
-void	play_sound(Mix_Chunk *wave)
+void	init_timer(t_timer *timer)
 {
-	Mix_PlayChannel(-1, wave, 0);
-}
-
-void	play_music(Mix_Music *wave)
-{
-	Mix_PlayMusic(wave, -1);
+	timer->framerate = 60;
+	timer->tick = 1000 / timer->framerate;
+	timer->next_step = SDL_GetTicks();
+	timer->last_time = 0;
+	timer->now = 0;
+	timer->fps = 0;
 }

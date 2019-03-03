@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sound.h                                            :+:      :+:    :+:   */
+/*   audio.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 21:40:00 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/02/27 14:16:31 by cmelara-         ###   ########.fr       */
+/*   Updated: 2019/03/03 17:34:46 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct	s_music
 	Mix_Music	*wave;
 }				t_music;
 
-bool	sound_init();
-void	sound_destroy();
+bool	init_audio();
+void	destroy_audio();
 
 t_sound	*load_sound(char *path, char *name);
 t_music	*load_music(char *path, char *name);

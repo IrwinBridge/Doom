@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   fps.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 19:31:15 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/03 17:36:18 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/03 14:30:20 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/03 15:53:15 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "timer.h"
 
-void	init_game(t_engine *engine, t_game *game)
+void	show_fps(t_timer *timer)
 {
-	if (!create_window(&(engine->window), "doom-nukem", 1280, 720))
-		printf("Window cannot be created\n");
-	init_audio();
-	init_timer(&(engine->timer));
-	init_keyboard_axis(&(engine->events));
-	init_mouse(&(engine->events));
-	init_manager(&(engine->manager));
-	load_scene(&(engine->manager), "level1");
-	game->playing = true;
+	timer->fps++;
+	if (timer->now > timer->last_time + 1000)
+	{
+		printf("FPS: %d\n", timer->fps);
+		timer->last_time = timer->now;
+		timer->fps = 0;
+	}
+}
+
+void	update_ticks(t_timer *timer)
+{
+	timer->now = SDL_GetTicks();
+}
+
+void	wait_for_frame(t_timer timer)
+{
+	SDL_Delay(timer.next_step - timer.now);
 }

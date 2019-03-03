@@ -6,7 +6,7 @@
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 14:01:32 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/02/27 21:06:44 by cmelara-         ###   ########.fr       */
+/*   Updated: 2019/03/03 16:21:08 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,22 @@ t_texture	*get_texture(t_scene *scene, char *name)
 	{
 		if (strcmp(((t_texture *)vector_get(textures, i))->name, name) == 0)
 			return ((t_texture *)vector_get(textures, i));
+		i++;
+	}
+	return (NULL);
+}
+
+t_map		*get_map(t_scene *scene, char *name)
+{
+	t_vector	*maps;
+	size_t		i;
+
+	i = 0;
+	maps = &(scene->asset.maps);
+	while (i < vector_size(maps))
+	{
+		if (strcmp(((t_map *)vector_get(maps, i))->name, name) == 0)
+			return ((t_map *)vector_get(maps, i));
 		i++;
 	}
 	return (NULL);

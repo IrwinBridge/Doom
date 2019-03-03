@@ -6,7 +6,7 @@
 /*   By: irvin <irvin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 21:09:21 by irvin             #+#    #+#             */
-/*   Updated: 2019/02/27 17:22:05 by cmelara-         ###   ########.fr       */
+/*   Updated: 2019/03/03 16:11:26 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	load_asset(t_scene *scene)
 	load_asset_of_type(&(asset->textures), TEXTURES, resources->textures);
 	// load_asset_of_type(&(asset->sprites), SPRITES, resources->sprites);
 	// load_asset_of_type(&(asset->fonts), FONTS, resources->fonts);
-	// load_asset_of_type(&(asset->maps), MAPS, resources->maps);
+	load_asset_of_type(&(asset->maps), MAPS, resources->maps);
 }

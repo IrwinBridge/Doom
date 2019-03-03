@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.h                                           :+:      :+:    :+:   */
+/*   textures.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/02 16:26:46 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/03 17:23:40 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/02/27 17:10:33 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/03 16:18:17 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EVENTS_H
-# define EVENTS_H
+#ifndef TEXTURES_H
+# define TEXTURES_H
 
 # ifdef __linux__
 #  include <SDL2/SDL.h>
@@ -19,23 +19,14 @@
 #  include "SDL.h"
 # endif
 
-# include "types.h"
+# include "tga_reader.h"
 
-typedef struct	s_mouse
+typedef struct	s_texture
 {
-	t_ipoint	pos;
-	t_ipoint	rel;
-}				t_mouse;
+	char		name[80];
+	t_image		*image;
+}				t_texture;
 
-typedef struct	s_events
-{
-	t_axis		axis;
-	t_mouse		mouse;
-}				t_events;
-
-void			set_mouse_motion(t_events *events, SDL_MouseMotionEvent motion);
-void			init_keyboard_axis(t_events *events);
-void			init_mouse(t_events *events);
-void			set_keyboard_axis(t_events *events, SDL_KeyboardEvent key);
+t_texture		*load_texture(char *path, char *name);
 
 #endif

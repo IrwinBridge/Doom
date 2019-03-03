@@ -6,7 +6,7 @@
 /*   By: irvin <irvin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 21:20:47 by irvin             #+#    #+#             */
-/*   Updated: 2019/02/28 19:10:41 by cmelara-         ###   ########.fr       */
+/*   Updated: 2019/03/03 16:14:09 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	*load_asset_from_path(char *path, char *name, t_asset_type type)
 	// 	return (load_sprite(path));
 	// else if (type == FONTS)
 	// 	return (load_font(path));
-	// else if (type == MAPS)
-	// 	return (load_map(path));
+	else if (type == MAPS)
+		return (load_map(path, name));
 	return (NULL);
 }
 

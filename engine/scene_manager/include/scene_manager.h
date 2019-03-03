@@ -6,7 +6,7 @@
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 09:58:20 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/02/27 21:07:14 by cmelara-         ###   ########.fr       */
+/*   Updated: 2019/03/03 17:35:56 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 /*
 ***************** Type dependencies ****************
 */
-# include "sound.h"
+# include "audio.h"
 # include "textures.h"
+# include "map.h"
 
 /*
 ***************** Native dependencies **************
@@ -100,5 +101,6 @@ void	load_asset_of_type(t_vector *assets, t_asset_type type, t_vector paths);
 t_sound		*get_sound(t_scene *scene, char *name);
 t_music		*get_music(t_scene *scene, char *name);
 t_texture	*get_texture(t_scene *scene, char *name);
+t_map		*get_map(t_scene *scene, char *name);
 
 #endif

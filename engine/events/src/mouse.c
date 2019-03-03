@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 19:31:15 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/03 17:36:18 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/03 13:13:38 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/03 14:01:35 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "events.h"
 
-void	init_game(t_engine *engine, t_game *game)
+void	init_mouse(t_events *events)
 {
-	if (!create_window(&(engine->window), "doom-nukem", 1280, 720))
-		printf("Window cannot be created\n");
-	init_audio();
-	init_timer(&(engine->timer));
-	init_keyboard_axis(&(engine->events));
-	init_mouse(&(engine->events));
-	init_manager(&(engine->manager));
-	load_scene(&(engine->manager), "level1");
-	game->playing = true;
+	events->mouse.pos.x = 0;
+	events->mouse.pos.y = 0;
+	events->mouse.rel.x = 0;
+	events->mouse.rel.y = 0;
+}
+
+void	set_mouse_motion(t_events *events, SDL_MouseMotionEvent motion)
+{
+	events->mouse.pos.x = motion.x;
+	events->mouse.pos.y = motion.y;
+	events->mouse.rel.x = motion.xrel;
+	events->mouse.rel.y = motion.yrel;
 }

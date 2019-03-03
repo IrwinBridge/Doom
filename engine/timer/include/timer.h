@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sound_init.c                                       :+:      :+:    :+:   */
+/*   timer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/25 22:16:04 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/02/27 15:17:04 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/03 14:09:29 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/03 15:57:37 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sound.h"
+#ifndef TIMER_H
+# define TIMER_H
 
-bool	sound_init()
+# ifdef __linux__
+#  include <SDL2/SDL.h>
+# else
+#  include "SDL.h"
+# endif
+
+typedef struct	s_timer
 {
-	int		frequency;
-	Uint16	format;
-	int		channels;
-	int		chunksize;
+	Sint32		framerate;
+	Uint32		tick;
+	Uint32		now;
+    Uint32		next_step;
+	Uint32		last_time;
+	Sint32		fps;
+}				t_timer;
 
-	frequency = 22050;
-	format = MIX_DEFAULT_FORMAT;
-	channels = 2;
-	chunksize = 2048;
-	if (Mix_OpenAudio(frequency, format, channels, chunksize) < 0)
-	{
-		perror(Mix_GetError());
-		return (false);
-	}
-	Mix_Init(MIX_INIT_OGG);
-	return (true);
-}
+void			init_timer(t_timer *timer);
+void			show_fps(t_timer *timer);
+void			update_ticks(t_timer *timer);
+void			wait_for_frame(t_timer timer);
+
+#endif

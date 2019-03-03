@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sound_unload.c                                     :+:      :+:    :+:   */
+/*   play_sound.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 13:49:05 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/02/27 13:53:11 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/02/27 14:12:02 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/03 17:37:00 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sound.h"
+#include "audio.h"
 
-void	unload_sound(Mix_Chunk *wave)
+void	play_sound(Mix_Chunk *wave)
 {
-	Mix_FreeChunk(wave);
-	wave = NULL;
+	Mix_PlayChannel(-1, wave, 0);
 }
 
-void	unload_music(Mix_Music *wave)
+void	play_music(Mix_Music *wave)
 {
-	Mix_FreeMusic(wave);
-	wave = NULL;
+	Mix_PlayMusic(wave, -1);
 }

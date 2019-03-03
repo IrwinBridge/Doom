@@ -6,11 +6,11 @@
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 23:07:29 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/02/27 16:47:37 by cmelara-         ###   ########.fr       */
+/*   Updated: 2019/03/03 17:37:05 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sound.h"
+#include "audio.h"
 
 t_sound	*load_sound(char *path, char *name)
 {

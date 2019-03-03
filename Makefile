@@ -5,10 +5,14 @@ SEARCH_WILDCARD =	dependencies/TgaReader/*.c \
 					engine/scene_manager/src/*.c \
 				  	engine/data_structures/vector/src/*.c \
 					engine/data_structures/queue/src/*.c \
+					engine/timer/src/*.c \
+					engine/events/src/*.c \
 				  	engine/io/src/*.c \
-					engine/sound/src/*.c \
-				  	engine/render/textures/src/*.c \
-				  	engine/render/portal/src/*.c \
+					engine/audio/src/*.c \
+				  	engine/graphics/textures/src/*.c \
+				  	engine/graphics/render/src/*.c \
+					engine/map/src/*c \
+					engine/entity/src/*.c \
 					game/src/*.c \
 					game/src/loop/*.c
 
@@ -20,12 +24,17 @@ HEADERS = -I dependencies/TgaReader/includes \
 		  -I engine \
 		  -I engine/window/include \
 		  -I engine/scene_manager/include \
+		  -I engine/data_structures/types \
 		  -I engine/data_structures/vector/include \
 		  -I engine/data_structures/queue/include \
+		  -I engine/timer/include \
+		  -I engine/events/include \
 		  -I engine/io/include \
-		  -I engine/sound/include \
-		  -I engine/render/textures/include \
-		  -I engine/render/portal/include \
+		  -I engine/audio/include \
+		  -I engine/graphics/textures/include \
+		  -I engine/graphics/render/include \
+		  -I engine/map/include \
+		  -I engine/entity/include \
 		  -I game/include
 
 ifeq ($(shell uname -s), Linux)
