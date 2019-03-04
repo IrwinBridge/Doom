@@ -6,7 +6,7 @@
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 16:16:02 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/03 20:35:58 by cmelara-         ###   ########.fr       */
+/*   Updated: 2019/03/04 13:57:11 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ void			read_sectors_from_map(t_vector *sectors, char *map);
 void			read_textures_from_map(t_vector *textures, char *map);
 void			read_lights_from_map(t_vector *lights, char *map);
 void			read_entities_from_map(t_vector *entities, char *map);
-void			read_player_from_map(t_player *player, char *map);
+void			read_player_from_map(t_player *player, t_vector	*sectors, char *map);
 
 #endif

@@ -14,4 +14,4 @@ brick_floor = 'textures/floors/brick_floor.tga'
 [FONTS]
 
 [MAPS]
-level1_map = 'maps/test.map'
+level_map = 'maps/test.map'

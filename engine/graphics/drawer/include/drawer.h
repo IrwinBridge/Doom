@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   entity.h                                           :+:      :+:    :+:   */
+/*   drawer.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/03 16:37:51 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/04 13:53:40 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/04 14:42:37 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/04 15:02:02 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENTITY_H
-# define ENTITY_H
+#ifndef DRAWER_H
+# define DRAWER_H
 
-# include "types.h"
+# ifdef __linux__
+#  include <SDL2/SDL.h>
+# else
+#  include "SDL.h"
+# endif
 
-typedef struct	s_player
-{
-	t_position	pos;
-	float		angle;
-	float		pitch;
-	float		anglesin;
-	float		anglecos;
-	unsigned	sector;
-	float		eyes_height;
-	float		couch_height;
-}				t_player;
+void	put_pixel(SDL_Surface *screen, int x, int y, Uint32 color);
+void	safe_put_pixel(SDL_Surface *screen, int x, int y, Uint32 color);
 
 #endif

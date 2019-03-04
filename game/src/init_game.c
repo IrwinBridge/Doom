@@ -6,7 +6,7 @@
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 19:31:15 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/03 17:36:18 by cmelara-         ###   ########.fr       */
+/*   Updated: 2019/03/04 15:13:10 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	init_game(t_engine *engine, t_game *game)
 {
+	t_map_data	*map;
+
 	if (!create_window(&(engine->window), "doom-nukem", 1280, 720))
 		printf("Window cannot be created\n");
 	init_audio();
@@ -22,5 +24,8 @@ void	init_game(t_engine *engine, t_game *game)
 	init_mouse(&(engine->events));
 	init_manager(&(engine->manager));
 	load_scene(&(engine->manager), "level1");
+	map = ((t_map *)get_map(&(engine->manager.scene), "level_map"))->data;
+	init_render(&(engine->render), map, engine->window.screen);
+	engine->player = &(map->player);
 	game->playing = true;
 }

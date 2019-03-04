@@ -6,7 +6,7 @@
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 12:16:16 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/03 17:35:49 by cmelara-         ###   ########.fr       */
+/*   Updated: 2019/03/04 14:03:03 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef	struct		s_engine
 	t_events		events;
 	t_render		render;
 	t_timer			timer;
+	t_player		*player;
 }					t_engine;
 
 #endif

@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   entity.h                                           :+:      :+:    :+:   */
+/*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/03 16:37:51 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/04 13:53:40 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/04 14:43:43 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/04 15:14:27 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENTITY_H
-# define ENTITY_H
+#include "drawer.h"
 
-# include "types.h"
-
-typedef struct	s_player
+void	put_pixel(SDL_Surface *screen, int x, int y, Uint32 color)
 {
-	t_position	pos;
-	float		angle;
-	float		pitch;
-	float		anglesin;
-	float		anglecos;
-	unsigned	sector;
-	float		eyes_height;
-	float		couch_height;
-}				t_player;
+	*(Uint32 *)(screen->pixels + (x + y * screen->w) * 4) = color;
+}
 
-#endif
+void	safe_put_pixel(SDL_Surface *screen, int x, int y, Uint32 color)
+{
+	if (x < 0 || y < 0 || x > screen->w - 1 || y > screen->h - 1)
+		return ;
+	*(Uint32 *)(screen->pixels + (x + y * screen->w) * 4) = color;
+}
