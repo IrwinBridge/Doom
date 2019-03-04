@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_game.c                                      :+:      :+:    :+:   */
+/*   move_camera.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 20:39:23 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/04 19:20:44 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/04 19:34:33 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/04 20:21:01 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "entity.h"
 
-void	render_game(t_engine *engine, t_game *game)
+void	move_camera(t_player *player, t_mouse mouse)
 {
-	SDL_FillRect(engine->window.screen, NULL, 0);
-	render_map(&(engine->render), engine->render.map, engine->player);
-	// render_sprites();
-	update_window(&(engine->window));
+	float	sensitivity;
+
+	sensitivity = 0.003f;
+	SDL_GetRelativeMouseState(&(mouse.rel.x), &(mouse.rel.y));
+	player->angle -= mouse.rel.x * sensitivity;
+	player->anglesin = sinf(player->angle);
+	player->anglecos = cosf(player->angle);
 }

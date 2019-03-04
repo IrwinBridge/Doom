@@ -1,6 +1,7 @@
 TARGET = doom-nukem
 
 SEARCH_WILDCARD =	dependencies/TgaReader/*.c \
+					engine/math/src/*.c \
 					engine/window/src/*.c \
 					engine/scene_manager/src/*.c \
 				  	engine/data_structures/vector/src/*.c \
@@ -14,6 +15,7 @@ SEARCH_WILDCARD =	dependencies/TgaReader/*.c \
 				  	engine/graphics/render/src/*.c \
 					engine/map/src/*c \
 					engine/entity/src/*.c \
+					engine/entity/src/player/*.c \
 					game/src/*.c \
 					game/src/loop/*.c
 
@@ -23,6 +25,7 @@ OBJ = $(SRCS:.c=.o)
 
 HEADERS = -I dependencies/TgaReader/includes \
 		  -I engine \
+		  -I engine/math/include \
 		  -I engine/window/include \
 		  -I engine/scene_manager/include \
 		  -I engine/data_structures/types \

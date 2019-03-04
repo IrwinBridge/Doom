@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_game.c                                      :+:      :+:    :+:   */
+/*   clamp.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 20:39:23 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/04 19:20:44 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/04 22:01:15 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/04 22:08:31 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "emath.h"
 
-void	render_game(t_engine *engine, t_game *game)
+float	fclamp(float value, float min, float max)
 {
-	SDL_FillRect(engine->window.screen, NULL, 0);
-	render_map(&(engine->render), engine->render.map, engine->player);
-	// render_sprites();
-	update_window(&(engine->window));
+	return (fminf(fmaxf(value, min), max));
 }

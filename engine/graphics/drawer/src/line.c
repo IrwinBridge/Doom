@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_game.c                                      :+:      :+:    :+:   */
+/*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 20:39:23 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/04 19:20:44 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/04 21:54:23 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/04 22:06:56 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "drawer.h"
 
-void	render_game(t_engine *engine, t_game *game)
+void	line(SDL_Surface *screen, int x, int y1, int y2, Uint32 color)
 {
-	SDL_FillRect(engine->window.screen, NULL, 0);
-	render_map(&(engine->render), engine->render.map, engine->player);
-	// render_sprites();
-	update_window(&(engine->window));
+	int y;
+
+	y1 = fclamp(y1, 0, screen->h - 1);
+	y2 = fclamp(y2, 0, screen->h - 1);
+	if (y2 > y1)
+	{
+		y = y1;
+		while (y <= y2)
+		{
+			safe_put_pixel(screen, x, y, color);
+			y++;
+		}
+	}
 }

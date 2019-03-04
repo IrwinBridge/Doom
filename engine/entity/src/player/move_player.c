@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_game.c                                      :+:      :+:    :+:   */
+/*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 20:39:23 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/04 19:20:44 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/04 18:15:38 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/04 19:03:21 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "entity.h"
 
-void	render_game(t_engine *engine, t_game *game)
+void	move_player(t_player *player, t_axis axis)
 {
-	SDL_FillRect(engine->window.screen, NULL, 0);
-	render_map(&(engine->render), engine->render.map, engine->player);
-	// render_sprites();
-	update_window(&(engine->window));
+	// Apply axis to velocity
+	player->velocity.x = axis.horizontal;
+	player->velocity.y = -axis.vertical;
+
+	// Apply velocity to position
+	player->pos.x -= player->velocity.x;
+	player->pos.y -= player->velocity.y;
 }

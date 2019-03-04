@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_game.c                                      :+:      :+:    :+:   */
+/*   emath.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 20:39:23 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/04 19:20:44 by cmelara-         ###   ########.fr       */
+/*   Created: 2019/03/04 22:00:34 by cmelara-          #+#    #+#             */
+/*   Updated: 2019/03/04 22:09:11 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#ifndef EMATH_H
+# define EMATH_H
 
-void	render_game(t_engine *engine, t_game *game)
-{
-	SDL_FillRect(engine->window.screen, NULL, 0);
-	render_map(&(engine->render), engine->render.map, engine->player);
-	// render_sprites();
-	update_window(&(engine->window));
-}
+# include "math.h"
+
+float	fclamp(float value, float min, float max);
+
+#endif

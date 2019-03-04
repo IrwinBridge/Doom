@@ -6,7 +6,7 @@
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 16:26:46 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/03 17:23:40 by cmelara-         ###   ########.fr       */
+/*   Updated: 2019/03/04 20:20:26 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ typedef struct	s_events
 	t_mouse		mouse;
 }				t_events;
 
-void			set_mouse_motion(t_events *events, SDL_MouseMotionEvent motion);
-void			init_keyboard_axis(t_events *events);
 void			init_mouse(t_events *events);
-void			set_keyboard_axis(t_events *events, SDL_KeyboardEvent key);
+void			set_mouse_motion(t_events *events, SDL_MouseMotionEvent *motion);
+void			init_keyboard_axis(t_events *events);
+void			set_keyboard_axis(t_events *events, SDL_KeyboardEvent *key);
 
 #endif

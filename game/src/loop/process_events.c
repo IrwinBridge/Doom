@@ -6,7 +6,7 @@
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 20:37:56 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/03 13:43:26 by cmelara-         ###   ########.fr       */
+/*   Updated: 2019/03/04 20:18:36 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	process_events(t_engine *engine, t_game *game)
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_MOUSEMOTION)
-			set_mouse_motion(&(engine->events), event.motion);
+			set_mouse_motion(&(engine->events), &event.motion);
 		if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
-			set_keyboard_axis(&(engine->events), event.key);
+			set_keyboard_axis(&(engine->events), &event.key);
 		if (event.type == SDL_QUIT)
 			game->playing = false;
 	}
