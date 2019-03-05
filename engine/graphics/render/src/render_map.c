@@ -6,7 +6,7 @@
 /*   By: cmelara- <cmelara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 12:02:56 by cmelara-          #+#    #+#             */
-/*   Updated: 2019/03/04 22:17:19 by cmelara-         ###   ########.fr       */
+/*   Updated: 2019/03/05 18:14:24 by cmelara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,24 @@ void	render_map(t_render *render, t_map_data *map, t_player *player)
 	t_fpoint	scal1;
 	t_fpoint	scal2;
 
-	t_fpoint	proj1;
-	t_fpoint	proj2;
+	t_ipoint	proj1;
+	t_ipoint	proj2;
 
-	float		proj1_floor;
-	float		proj1_ceiling;
-	float		proj2_floor;
-	float		proj2_ceiling;
+	int		proj1_floor;
+	int		proj1_ceiling;
+	int		proj2_floor;
+	int		proj2_ceiling;
 
 	int			v;
 	int			x;
 
+	float hfov = 0.66 * render->screen->h;
+	float vfov = 0.2 * render->screen->h;
+
 	sector = (t_sector *)vector_get(&(map->sectors), player->sector);
+	int nedges = vector_size(&(sector->vertices)) - 1;
 	v = 0;
-	while (v < vector_size(&(sector->vertices)) - 1)
+	while (v < nedges)
 	{
 		rel1 = *((t_fpoint *)vector_get(&(sector->vertices), v));
 		rel2 = *((t_fpoint *)vector_get(&(sector->vertices), v + 1));
@@ -69,8 +73,6 @@ void	render_map(t_render *render, t_map_data *map, t_player *player)
 		rot2.y = rel2.x * player->anglesin + rel2.y * player->anglecos;
 
 		// Scale relative to screen
-		float hfov = 0.66 * render->screen->h;
-		float vfov = 0.2 * render->screen->h;
 		scal1.x = hfov / rot1.y;
 		scal1.y = vfov / rot1.y;
 		scal2.x = hfov / rot2.y;
@@ -86,22 +88,29 @@ void	render_map(t_render *render, t_map_data *map, t_player *player)
 		proj2_floor = render->screen->h / 2 - rel_floor * scal2.y;
 		proj2_ceiling = render->screen->h / 2 - rel_ceiling * scal2.y;
 
-		// draw lines from proj1.x to proj2.x
-		x = proj1.x;
-		while (x < proj2.x)
+		// Debug line
+		line(render->screen, proj1.x, 0, render->screen->h - 1, 0xFF0000);
+
+		// draw lines from x1 to x2 of the wall
+		int begin = fmaxf(proj1.x, 0);
+		int end = fminf(proj2.x, render->screen->w - 1);
+		x = begin;
+		while (x <= end)
 		{
-			Uint8 r = fclamp(20 * (v + 1), 0, 255);
-			Uint8 g = fclamp(20 * (v + 1), 0, 255);
+			Uint8 r = fclamp(20 * (v + 2), 0, 255);
+			Uint8 g = fclamp(100, 0, 255);
 			Uint8 b = fclamp(20 * (v + 1), 0, 255);
 			Uint32 color = SDL_MapRGBA(render->screen->format, r, g, b, 255);
 
-			line(render->screen, x, proj1_ceiling, proj1_floor, color);
+			// Get y of floor and ceiling for x
+			int yfloor = (x - proj1.x) * (proj2_floor - proj1_floor)
+							/ (proj2.x - proj1.x) + proj1_floor;
+			int yceiling = (x - proj1.x) * (proj2_ceiling - proj1_ceiling)
+							/ (proj2.x - proj1.x) + proj1_ceiling;
+
+			line(render->screen, x, yceiling, yfloor, color);
 			x++;
 		}
-
-		// safe_put_pixel(render->screen, proj1.x, proj1.y, 0xFF0000);
-		// safe_put_pixel(render->screen, proj2.x, proj2.y, 0xFF0000);
-
 		v++;
 	}
 
